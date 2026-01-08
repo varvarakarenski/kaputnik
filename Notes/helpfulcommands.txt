@@ -1,0 +1,23 @@
+Hi!
+This is a note from Varvara. I thought it would be helpful to write down some commands that I find to use very often, 
+but our team is keeps losing things we write down on paper.
+
+TAKE PICTURE:
+rpicam-still -t <shutter speed in ms> -o <name>.jpg
+
+BASICS:
+mkdir = make directory (folder)
+ls = list contents
+pwd = print working directory (where am i?)
+cd = change directory
+.. = current location
+mv = move file
+rm = delete file
+
+COPY FILES TO LAPTOP/USB MANUALLY:
+cp source-directory/<file-to-copy.whatever> destination-directory/.
+To copy a directry, print -r after cp.
+cp -r source-directory/<file-to-copy.whatever> destination-directory/.
+
+Last updated by Varvara K @ 1/7/2026 11:06 PM EST
+
