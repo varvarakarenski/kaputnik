@@ -31,4 +31,4 @@ tmp/
 *.tmp
 *.log
 
-!.gitignore
+.gitignore
