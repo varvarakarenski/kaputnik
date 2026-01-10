@@ -62,8 +62,8 @@ def img_gen(name):
     imgname = (f'{REPO_PATH}/{FOLDER_PATH}/{name}{t}.jpg')
     return imgname
 
-    def take_photo():
-        print("CubeSat is active. Waiting for shake...")
+def take_photo():
+    print("CubeSat is active. Waiting for shake...")
     while True:
         # Assess acceleration data
         accelx, accely, accelz = accel_gyro.acceleration
