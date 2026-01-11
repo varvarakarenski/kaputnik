@@ -9,7 +9,7 @@ but for this activity it is not required.
 The provided functions are only for reference, you do not need to use them. 
 You will need to complete the take_photo() function and configure the VARIABLES section
 """
-
+#l;jksdg;dsfgds;gjed;ogvnjerol;ihjnsdeogiukjdgo;nhjzxffdb,.nzdfkgzshdg67676767
 #AUTHOR: 
 #DATE:
 
