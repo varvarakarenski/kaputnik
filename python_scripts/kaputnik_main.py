@@ -12,7 +12,7 @@ Folder structure:
   └── storage/            ← runtime data (pending, archive, telemetry)
 """
 
-import os, time, shutil, logging, json, socket
+import os, time, shutil, logging, json
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from PIL import Image
@@ -32,7 +32,7 @@ from mission_logger import (
     log_health,        log_imu,
     log_capture_start, log_image_saved, log_capture_complete,
     log_diff_result,   log_no_reference_found,
-    log_downlink_start, log_downlink_tx, log_downlink_cap, log_downlink_complete,
+    log_downlink_start, log_downlink_complete,
     log_sleep,         log_wakeup,
     log_error,         log_warning, log_low_battery_skip,
     get_log_paths,
@@ -57,14 +57,11 @@ BASE_DIR      = REPO_PATH   # used by mission_logger
 TOTAL_ORBITS        = 383
 CAPTURE_PHASE_END   = 375
 IMAGES_PER_ORBIT    = 20
-MAX_DOWNLINK_BYTES  = 54 * 1024**2
 ORBIT_PERIOD_S      = 111 * 60
-SIMULATED_LATENCY_S = 1.3
 COMPARISON_HOURS    = 708.55
 MIN_BATTERY_PCT     = 15.0
 
-GROUND_STATION_IP   = "192.168.1.100"   # ← your laptop's IP
-GROUND_STATION_PORT = 5005
+
 
 # ─────────────────────────────────────────────
 # LOGGING
@@ -334,58 +331,25 @@ def git_push(orbit: int):
 # ─────────────────────────────────────────────
 # DOWNLINK
 # ─────────────────────────────────────────────
-def transmit_telemetry(orbit: int, telemetry: dict) -> bool:
-    payload = json.dumps({"type": "telemetry", "data": telemetry}).encode()
-    try:
-        time.sleep(SIMULATED_LATENCY_S)
-        with socket.create_connection((GROUND_STATION_IP, GROUND_STATION_PORT), timeout=10) as s:
-            s.sendall(len(payload).to_bytes(4, "big") + payload)
-        log.info(f"[Orbit {orbit}] Telemetry TX OK ({len(payload)} bytes)")
-        return True
-    except Exception as e:
-        log_warning(orbit, "DOWNLINK", f"Telemetry TX failed: {e}")
-        return False
-
-def transmit_file(orbit: int, file_path: Path) -> tuple[bool, int]:
-    try:
-        data   = file_path.read_bytes()
-        header = json.dumps({"type": "image", "filename": file_path.name,
-                             "size": len(data)}).encode()
-        time.sleep(SIMULATED_LATENCY_S)
-        with socket.create_connection((GROUND_STATION_IP, GROUND_STATION_PORT), timeout=30) as s:
-            s.sendall(len(header).to_bytes(4, "big") + header)
-            s.sendall(data)
-        return True, len(data)
-    except Exception as e:
-        log_warning(orbit, "DOWNLINK", f"File TX failed {file_path.name}: {e}")
-        return False, 0
-
 def downlink_phase(orbit: int, telemetry: dict):
+    """
+    Move all pending images to archive then push
+    everything to GitHub. No socket/laptop needed.
+    """
     pending    = sorted(PENDING_DIR.glob("*.jpg"), key=lambda p: p.stat().st_mtime)
     pending_mb = sum(p.stat().st_size for p in pending) / 1024**2
     log_downlink_start(orbit, len(pending), pending_mb)
 
-    telem_ok   = transmit_telemetry(orbit, telemetry)
-    total_sent = 0
-    sent = failed = 0
-
+    # Move all pending images to archive
+    moved = 0
     for img in pending:
-        if total_sent >= MAX_DOWNLINK_BYTES:
-            log_downlink_cap(orbit, sent, total_sent / 1024**2, len(pending) - sent)
-            break
-        success, nbytes = transmit_file(orbit, img)
-        log_downlink_tx(orbit, img.name, img.stat().st_size / 1024,
-                        success, (total_sent + nbytes) / 1024**2)
-        if success:
-            shutil.move(str(img), str(ARCHIVE_DIR / img.name))
-            total_sent += nbytes
-            sent += 1
-        else:
-            failed += 1
+        shutil.move(str(img), str(ARCHIVE_DIR / img.name))
+        moved += 1
+        log.info(f"  Archived: {img.name}")
 
-    log_downlink_complete(orbit, sent, total_sent / 1024**2, failed, telem_ok)
+    log_downlink_complete(orbit, moved, pending_mb, 0, True)
 
-    # Push everything to GitHub
+    # Push images and logs to GitHub
     git_push(orbit)
 
 # ─────────────────────────────────────────────

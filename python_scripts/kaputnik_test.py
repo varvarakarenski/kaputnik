@@ -19,7 +19,7 @@ Run from python_scripts/:
     python3 kaputnik_test.py
 """
 
-import os, time, shutil, logging, json, socket
+import os, time, shutil, logging, json
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from PIL import Image
@@ -38,7 +38,7 @@ from mission_logger import (
     log_health,        log_imu,
     log_capture_start, log_image_saved, log_capture_complete,
     log_diff_result,   log_no_reference_found,
-    log_downlink_start, log_downlink_tx, log_downlink_cap, log_downlink_complete,
+    log_downlink_start, log_downlink_complete,
     log_sleep,         log_wakeup,
     log_error,         log_warning, log_low_battery_skip,
     get_log_paths,
@@ -72,11 +72,8 @@ TEST_COMPARISON_SECS  = 10
 TEST_COMPARISON_TOL_S = 30
 TEST_ORBIT_PAUSE_S    = 12
 MIN_BATTERY_PCT       = 15.0
-SIMULATED_LATENCY_S   = 1.3
-MAX_DOWNLINK_BYTES    = 54 * 1024**2
 
-GROUND_STATION_IP     = "192.168.1.100"
-GROUND_STATION_PORT   = 5005
+
 
 # ─────────────────────────────────────────────
 # TEST RESULT TRACKER
@@ -373,54 +370,19 @@ def git_push(orbit):
 # ─────────────────────────────────────────────
 # DOWNLINK
 # ─────────────────────────────────────────────
-def transmit_telemetry(orbit, telemetry):
-    payload = json.dumps({"type": "telemetry", "data": telemetry}).encode()
-    try:
-        time.sleep(SIMULATED_LATENCY_S)
-        with socket.create_connection((GROUND_STATION_IP, GROUND_STATION_PORT), timeout=5) as s:
-            s.sendall(len(payload).to_bytes(4, "big") + payload)
-        results.ok(f"Orbit {orbit} telemetry downlink", f"{len(payload)} bytes")
-        return True
-    except Exception:
-        results.warn(f"Orbit {orbit} telemetry downlink",
-                     "ground station unreachable — expected if laptop not connected")
-        return False
-
-def transmit_file(orbit, file_path):
-    try:
-        data   = file_path.read_bytes()
-        header = json.dumps({"type": "image", "filename": file_path.name,
-                             "size": len(data)}).encode()
-        time.sleep(SIMULATED_LATENCY_S)
-        with socket.create_connection((GROUND_STATION_IP, GROUND_STATION_PORT), timeout=5) as s:
-            s.sendall(len(header).to_bytes(4, "big") + header)
-            s.sendall(data)
-        return True, len(data)
-    except Exception:
-        return False, 0
-
 def downlink_phase(orbit, telemetry):
+    """Move pending images to archive then push to GitHub."""
     pending    = sorted(PENDING_DIR.glob("*.jpg"), key=lambda p: p.stat().st_mtime)
     pending_mb = sum(p.stat().st_size for p in pending) / 1024**2
     log_downlink_start(orbit, len(pending), pending_mb)
-    telem_ok   = transmit_telemetry(orbit, telemetry)
-    total_sent = sent = failed = 0
 
+    moved = 0
     for img in pending:
-        if total_sent >= MAX_DOWNLINK_BYTES:
-            break
-        success, nbytes = transmit_file(orbit, img)
-        log_downlink_tx(orbit, img.name, img.stat().st_size / 1024,
-                        success, (total_sent + nbytes) / 1024**2)
-        # Move to archive regardless in test mode so change detection works
         shutil.move(str(img), str(ARCHIVE_DIR / img.name))
-        if success:
-            total_sent += nbytes; sent += 1
-        else:
-            failed += 1
+        moved += 1
 
-    log_downlink_complete(orbit, sent, total_sent / 1024**2, failed, telem_ok)
-    results.ok(f"Orbit {orbit} downlink", f"sent={sent}  failed={failed}")
+    log_downlink_complete(orbit, moved, pending_mb, 0, True)
+    results.ok(f"Orbit {orbit} downlink", f"{moved} images archived")
     git_push(orbit)
 
 # ─────────────────────────────────────────────
