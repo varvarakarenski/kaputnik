@@ -1,0 +1,93 @@
+2026-03-20T19:37:22Z  INFO      [BOOT      ]  orbit=0001  |  message=Kaputnik mission logger initialised  log_file=/home/kaputnik/kaputnik_repo/storage/logs/kaputnik_mission.log  events_file=/home/kaputnik/kaputnik_repo/storage/logs/kaputnik_events.jsonl
+
+────────────────────────────────────────────────────────────
+  MISSION START
+────────────────────────────────────────────────────────────
+2026-03-20T19:37:22Z  INFO      [MISSION   ]  orbit=0000  |  status=START  total_orbits=2  capture_phase_end=2  satellite=Kaputnik  mission=Lunar Surface Change Monitor
+
+────────────────────────────────────────────────────────────
+  ORBIT 1/2
+────────────────────────────────────────────────────────────
+2026-03-20T19:37:22Z  INFO      [ORBIT     ]  orbit=0001  |  status=START  orbit=1  total_orbits=2  utc_time=2026-03-20T23:37:22.522491+00:00  phase=CAPTURE
+2026-03-20T19:37:22Z  WARNING   [WARNING   ]  orbit=0001  |  source=POWER  message=Battery below threshold — orbit ops skipped  battery_pct=7.9  threshold_pct=15
+2026-03-20T19:37:22Z  INFO      [ORBIT     ]  orbit=0001  |  status=END  duration_s=0
+2026-03-20T19:37:22Z  INFO      [SLEEP     ]  orbit=0001  |  status=ENTERING_DEEP_SLEEP  sleep_min=0.2  wake_utc=N/A (test mode)  rtc_source=PiSugar3
+2026-03-20T19:37:34Z  INFO      [BOOT      ]  orbit=0002  |  status=WAKEUP  message=Pi woke from deep sleep via PiSugar 3 RTC alarm
+
+────────────────────────────────────────────────────────────
+  ORBIT 2/2
+────────────────────────────────────────────────────────────
+2026-03-20T19:37:34Z  INFO      [ORBIT     ]  orbit=0002  |  status=START  orbit=2  total_orbits=2  utc_time=2026-03-20T23:37:34.543793+00:00  phase=CAPTURE
+2026-03-20T19:37:34Z  WARNING   [WARNING   ]  orbit=0002  |  source=POWER  message=Battery below threshold — orbit ops skipped  battery_pct=7.9  threshold_pct=15
+2026-03-20T19:37:34Z  INFO      [ORBIT     ]  orbit=0002  |  status=END  duration_s=0
+
+────────────────────────────────────────────────────────────
+  MISSION COMPLETE
+────────────────────────────────────────────────────────────
+2026-03-20T19:37:34Z  INFO      [MISSION   ]  orbit=0002  |  status=COMPLETE  total_orbits=2  message=All orbits executed successfully.
+2026-03-20T19:38:53Z  INFO      [BOOT      ]  orbit=0001  |  message=Kaputnik mission logger initialised  log_file=/home/kaputnik/kaputnik_repo/storage/logs/kaputnik_mission.log  events_file=/home/kaputnik/kaputnik_repo/storage/logs/kaputnik_events.jsonl
+
+────────────────────────────────────────────────────────────
+  MISSION START
+────────────────────────────────────────────────────────────
+2026-03-20T19:38:53Z  INFO      [MISSION   ]  orbit=0000  |  status=START  total_orbits=2  capture_phase_end=2  satellite=Kaputnik  mission=Lunar Surface Change Monitor
+
+────────────────────────────────────────────────────────────
+  ORBIT 1/2
+────────────────────────────────────────────────────────────
+2026-03-20T19:38:54Z  INFO      [ORBIT     ]  orbit=0001  |  status=START  orbit=1  total_orbits=2  utc_time=2026-03-20T23:38:54.328944+00:00  phase=CAPTURE
+2026-03-20T19:38:54Z  WARNING   [WARNING   ]  orbit=0001  |  source=POWER  message=Battery below threshold — orbit ops skipped  battery_pct=7.9  threshold_pct=15
+2026-03-20T19:38:54Z  INFO      [ORBIT     ]  orbit=0001  |  status=END  duration_s=0
+2026-03-20T19:38:54Z  INFO      [SLEEP     ]  orbit=0001  |  status=ENTERING_DEEP_SLEEP  sleep_min=0.2  wake_utc=N/A (test mode)  rtc_source=PiSugar3
+2026-03-20T19:39:06Z  INFO      [BOOT      ]  orbit=0002  |  status=WAKEUP  message=Pi woke from deep sleep via PiSugar 3 RTC alarm
+
+────────────────────────────────────────────────────────────
+  ORBIT 2/2
+────────────────────────────────────────────────────────────
+2026-03-20T19:39:06Z  INFO      [ORBIT     ]  orbit=0002  |  status=START  orbit=2  total_orbits=2  utc_time=2026-03-20T23:39:06.349768+00:00  phase=CAPTURE
+2026-03-20T19:39:06Z  WARNING   [WARNING   ]  orbit=0002  |  source=POWER  message=Battery below threshold — orbit ops skipped  battery_pct=7.9  threshold_pct=15
+2026-03-20T19:39:06Z  INFO      [ORBIT     ]  orbit=0002  |  status=END  duration_s=0
+
+────────────────────────────────────────────────────────────
+  MISSION COMPLETE
+────────────────────────────────────────────────────────────
+2026-03-20T19:39:06Z  INFO      [MISSION   ]  orbit=0002  |  status=COMPLETE  total_orbits=2  message=All orbits executed successfully.
+2026-03-20T19:52:44Z  INFO      [BOOT      ]  orbit=0001  |  message=Kaputnik mission logger initialised  log_file=/home/kaputnik/kaputnik_repo/storage/logs/kaputnik_mission.log  events_file=/home/kaputnik/kaputnik_repo/storage/logs/kaputnik_events.jsonl
+
+────────────────────────────────────────────────────────────
+  MISSION START
+────────────────────────────────────────────────────────────
+2026-03-20T19:52:44Z  INFO      [MISSION   ]  orbit=0000  |  status=START  total_orbits=2  capture_phase_end=2  satellite=Kaputnik  mission=Lunar Surface Change Monitor
+
+────────────────────────────────────────────────────────────
+  ORBIT 1/2
+────────────────────────────────────────────────────────────
+2026-03-20T19:52:44Z  INFO      [ORBIT     ]  orbit=0001  |  status=START  orbit=1  total_orbits=2  utc_time=2026-03-20T23:52:44.946216+00:00  phase=CAPTURE
+2026-03-20T19:52:44Z  INFO      [HEALTH    ]  orbit=0001  |  battery_pct=21.8  battery_v=3.459  battery_wh=0.903  charging=False  solar_present=False  cpu_temp_c=46.7  warnings=[]
+2026-03-20T19:52:44Z  INFO      [IMU       ]  orbit=0001  |  accel_x_ms2=-0.7214  accel_y_ms2=0.9583  accel_z_ms2=9.681  gyro_x_degs=19.41  gyro_y_degs=7.429  gyro_z_degs=-9.555  mag_x_uT=-133.6  mag_y_uT=81.73  mag_z_uT=63.87  roll_deg=1.49  pitch_deg=1.63  yaw_deg=-28.34  timestamp=2026-03-20T23:52:44.970637+00:00  anomalies=[]  anomaly_count=0
+2026-03-20T19:52:44Z  INFO      [CAPTURE   ]  orbit=0001  |  status=START  images_planned=2
+2026-03-20T19:52:47Z  INFO      [CAPTURE   ]  orbit=0001  |  status=IMAGE_SAVED  index=0  filename=kaputnik_o0001_20260320T235244_00.jpg  size_kb=333.7
+2026-03-20T19:52:47Z  INFO      [CAPTURE   ]  orbit=0001  |  status=IMAGE_SAVED  index=1  filename=kaputnik_o0001_20260320T235244_01.jpg  size_kb=350.9
+2026-03-20T19:52:48Z  INFO      [CAPTURE   ]  orbit=0001  |  status=COMPLETE  saved=2  failed=0
+2026-03-20T19:52:48Z  INFO      [DIFF      ]  orbit=0001  |  status=NO_REFERENCE  image=kaputnik_o0001_20260320T235244_00.jpg  message=No archive image found within comparison window (~708.55h)
+2026-03-20T19:52:48Z  INFO      [DIFF      ]  orbit=0001  |  status=NO_REFERENCE  image=kaputnik_o0001_20260320T235244_01.jpg  message=No archive image found within comparison window (~708.55h)
+2026-03-20T19:52:48Z  INFO      [DOWNLINK  ]  orbit=0001  |  status=LINK_OPEN  pending_files=2  pending_mb=0.67
+2026-03-20T19:52:48Z  INFO      [DOWNLINK  ]  orbit=0001  |  status=LINK_CLOSED  files_sent=2  total_mb=0.67  deferred=0  telemetry_ok=True
+2026-03-20T19:54:19Z  INFO      [ORBIT     ]  orbit=0001  |  status=END  duration_s=94.7
+2026-03-20T19:54:19Z  INFO      [SLEEP     ]  orbit=0001  |  status=ENTERING_DEEP_SLEEP  sleep_min=0.2  wake_utc=N/A (test mode)  rtc_source=PiSugar3
+2026-03-20T19:54:31Z  INFO      [BOOT      ]  orbit=0002  |  status=WAKEUP  message=Pi woke from deep sleep via PiSugar 3 RTC alarm
+
+────────────────────────────────────────────────────────────
+  ORBIT 2/2
+────────────────────────────────────────────────────────────
+2026-03-20T19:54:31Z  INFO      [ORBIT     ]  orbit=0002  |  status=START  orbit=2  total_orbits=2  utc_time=2026-03-20T23:54:31.602749+00:00  phase=CAPTURE
+2026-03-20T19:54:31Z  INFO      [HEALTH    ]  orbit=0002  |  battery_pct=24.9  battery_v=3.485  battery_wh=1.043  charging=False  solar_present=False  cpu_temp_c=45.3  warnings=[]
+2026-03-20T19:54:31Z  INFO      [IMU       ]  orbit=0002  |  accel_x_ms2=-8.94  accel_y_ms2=0.9428  accel_z_ms2=4.277  gyro_x_degs=5.478  gyro_y_degs=68.85  gyro_z_degs=62.75  mag_x_uT=-91.06  mag_y_uT=108  mag_z_uT=81.53  roll_deg=172.8  pitch_deg=-1.2  yaw_deg=139.9  timestamp=2026-03-20T23:54:31.646208+00:00  anomalies=[]  anomaly_count=0
+2026-03-20T19:54:31Z  INFO      [CAPTURE   ]  orbit=0002  |  status=START  images_planned=2
+2026-03-20T19:54:33Z  INFO      [CAPTURE   ]  orbit=0002  |  status=IMAGE_SAVED  index=0  filename=kaputnik_o0002_20260320T235431_00.jpg  size_kb=296.1
+2026-03-20T19:54:34Z  INFO      [CAPTURE   ]  orbit=0002  |  status=IMAGE_SAVED  index=1  filename=kaputnik_o0002_20260320T235431_01.jpg  size_kb=363.2
+2026-03-20T19:54:35Z  INFO      [CAPTURE   ]  orbit=0002  |  status=COMPLETE  saved=2  failed=0
+2026-03-20T19:54:35Z  INFO      [DIFF      ]  orbit=0002  |  status=NO_REFERENCE  image=kaputnik_o0002_20260320T235431_00.jpg  message=No archive image found within comparison window (~708.55h)
+2026-03-20T19:54:35Z  INFO      [DIFF      ]  orbit=0002  |  status=NO_REFERENCE  image=kaputnik_o0002_20260320T235431_01.jpg  message=No archive image found within comparison window (~708.55h)
+2026-03-20T19:54:35Z  INFO      [DOWNLINK  ]  orbit=0002  |  status=LINK_OPEN  pending_files=2  pending_mb=0.64
+2026-03-20T19:54:35Z  INFO      [DOWNLINK  ]  orbit=0002  |  status=LINK_CLOSED  files_sent=2  total_mb=0.64  deferred=0  telemetry_ok=True

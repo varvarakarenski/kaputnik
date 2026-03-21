@@ -1,0 +1,29 @@
+{
+  "orbit": 2,
+  "timestamp": "2026-03-20T23:54:31.654417+00:00",
+  "power": {
+    "battery_percent": 24.93797,
+    "battery_voltage_v": 3.484666,
+    "battery_wh": 1.04280595401624,
+    "is_charging": false,
+    "solar_connected": false,
+    "timestamp": "2026-03-20T23:54:31.645212+00:00"
+  },
+  "imu": {
+    "accel_x_ms2": -8.9396,
+    "accel_y_ms2": 0.9428,
+    "accel_z_ms2": 4.2772,
+    "gyro_x_degs": 5.4775,
+    "gyro_y_degs": 68.8538,
+    "gyro_z_degs": 62.7463,
+    "mag_x_uT": -91.055,
+    "mag_y_uT": 108.024,
+    "mag_z_uT": 81.526,
+    "roll_deg": 172.75,
+    "pitch_deg": -1.2,
+    "yaw_deg": 139.91,
+    "timestamp": "2026-03-20T23:54:31.646208+00:00"
+  },
+  "cpu_temp_c": 45.277,
+  "imu_anomalies": []
+}
