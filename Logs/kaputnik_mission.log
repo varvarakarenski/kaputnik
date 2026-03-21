@@ -202,3 +202,30 @@
 2026-03-20T20:36:25Z  INFO      [DIFF      ]  orbit=0002  |  new_image=kaputnik_o0002_20260321T003620_01.jpg  ref_image=kaputnik_o0001_20260321T003603_01.jpg  diff_image=diff_kaputnik_o0002_20260321T003620_01_vs_kaputnik_o0001_20260321T003603_01.jpg  change_detected=True  diff_size_kb=226.6
 2026-03-20T20:36:25Z  INFO      [DOWNLINK  ]  orbit=0002  |  status=LINK_OPEN  pending_files=2  pending_mb=0.92
 2026-03-20T20:36:25Z  INFO      [DOWNLINK  ]  orbit=0002  |  status=LINK_CLOSED  files_sent=2  total_mb=0.92  deferred=0  telemetry_ok=True
+2026-03-20T20:36:28Z  INFO      [ORBIT     ]  orbit=0002  |  status=END  duration_s=7.4
+
+────────────────────────────────────────────────────────────
+  MISSION COMPLETE
+────────────────────────────────────────────────────────────
+2026-03-20T20:36:28Z  INFO      [MISSION   ]  orbit=0002  |  status=COMPLETE  total_orbits=2  message=All orbits executed successfully.
+2026-03-20T20:37:29Z  INFO      [BOOT      ]  orbit=0001  |  message=Kaputnik mission logger initialised  log_file=/home/kaputnik/kaputnik_repo/storage/logs/kaputnik_mission.log  events_file=/home/kaputnik/kaputnik_repo/storage/logs/kaputnik_events.jsonl
+
+────────────────────────────────────────────────────────────
+  MISSION START
+────────────────────────────────────────────────────────────
+2026-03-20T20:37:29Z  INFO      [MISSION   ]  orbit=0000  |  status=START  total_orbits=2  capture_phase_end=2  satellite=Kaputnik  mission=Lunar Surface Change Monitor
+
+────────────────────────────────────────────────────────────
+  ORBIT 1/2
+────────────────────────────────────────────────────────────
+2026-03-20T20:37:30Z  INFO      [ORBIT     ]  orbit=0001  |  status=START  orbit=1  total_orbits=2  utc_time=2026-03-21T00:37:30.293983+00:00  phase=CAPTURE
+2026-03-20T20:37:30Z  INFO      [HEALTH    ]  orbit=0001  |  battery_pct=52.1  battery_v=3.601  battery_wh=2.253  charging=False  solar_present=False  cpu_temp_c=47.7  warnings=[]
+2026-03-20T20:37:30Z  INFO      [IMU       ]  orbit=0001  |  accel_x_ms2=0.2106  accel_y_ms2=-9.874  accel_z_ms2=0.3948  gyro_x_degs=-0.0175  gyro_y_degs=0.0613  gyro_z_degs=-0.21  mag_x_uT=-106.8  mag_y_uT=239  mag_z_uT=78.35  roll_deg=-14.77  pitch_deg=-4.43  yaw_deg=-30.84  timestamp=2026-03-21T00:37:30.321495+00:00  anomalies=[]  anomaly_count=0
+2026-03-20T20:37:30Z  INFO      [CAPTURE   ]  orbit=0001  |  status=START  images_planned=2
+2026-03-20T20:37:32Z  INFO      [CAPTURE   ]  orbit=0001  |  status=IMAGE_SAVED  index=0  filename=kaputnik_o0001_20260321T003730_00.jpg  size_kb=364.2
+2026-03-20T20:37:33Z  INFO      [CAPTURE   ]  orbit=0001  |  status=IMAGE_SAVED  index=1  filename=kaputnik_o0001_20260321T003730_01.jpg  size_kb=363.9
+2026-03-20T20:37:34Z  INFO      [CAPTURE   ]  orbit=0001  |  status=COMPLETE  saved=2  failed=0
+2026-03-20T20:37:34Z  INFO      [DIFF      ]  orbit=0001  |  status=NO_REFERENCE  image=kaputnik_o0001_20260321T003730_00.jpg  message=No archive image found within comparison window (~708.55h)
+2026-03-20T20:37:34Z  INFO      [DIFF      ]  orbit=0001  |  status=NO_REFERENCE  image=kaputnik_o0001_20260321T003730_01.jpg  message=No archive image found within comparison window (~708.55h)
+2026-03-20T20:37:34Z  INFO      [DOWNLINK  ]  orbit=0001  |  status=LINK_OPEN  pending_files=2  pending_mb=0.71
+2026-03-20T20:37:34Z  INFO      [DOWNLINK  ]  orbit=0001  |  status=LINK_CLOSED  files_sent=2  total_mb=0.71  deferred=0  telemetry_ok=True
