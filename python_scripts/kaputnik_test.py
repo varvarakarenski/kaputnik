@@ -323,7 +323,7 @@ def run_change_detection(orbit, new_images):
             if orbit == 2:
                 results.warn(f"Orbit {orbit} change detection", "no reference found — check timestamp gap")
             continue
-        diff_path = PENDING_DIR / f"diff_{img_path.stem}_vs_{match.stem}.jpg"
+        diff_path = ARCHIVE_DIR / f"diff_{img_path.stem}_vs_{match.stem}.jpg"
         try:
             diff_img  = subtract_images(str(img_path), str(match), str(diff_path))
             mean_diff = float(np.array(diff_img).mean())
@@ -342,13 +342,21 @@ def run_change_detection(orbit, new_images):
 # ─────────────────────────────────────────────
 def git_push(orbit):
     try:
-        # Copy images → kaputnik_images/
+        # Copy ALL images and diffs from archive → kaputnik_images/
+        # Overwrite every time so latest version is always in the repo
         copied = 0
         for img in sorted(ARCHIVE_DIR.glob("*.jpg")):
             dest = IMAGES_DIR / img.name
-            if not dest.exists():
-                shutil.copy2(str(img), str(dest))
-                copied += 1
+            shutil.copy2(str(img), str(dest))
+            copied += 1
+            log.info(f"  -> kaputnik_images/: {img.name}")
+
+        # Safety net: also copy any diffs still in pending
+        for img in sorted(PENDING_DIR.glob("diff_*.jpg")):
+            dest = IMAGES_DIR / img.name
+            shutil.copy2(str(img), str(dest))
+            copied += 1
+            log.info(f"  -> kaputnik_images/ (from pending): {img.name}")
 
         # Copy logs → Logs/
         for lpath in get_log_paths().values():
@@ -361,9 +369,14 @@ def git_push(orbit):
         repo.git.add(str(IMAGES_DIR))
         repo.git.add(str(LOGS_DIR))
         timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        repo.index.commit(f"TEST Orbit {orbit:04d} | {timestamp} | {copied} new images")
+        diffs = list(IMAGES_DIR.glob("diff_*.jpg"))
+        repo.index.commit(
+            f"TEST Orbit {orbit:04d} | {timestamp} | "
+            f"{copied} images | {len(diffs)} diff(s)"
+        )
         origin.push()
-        results.ok(f"Orbit {orbit} GitHub push", f"{copied} new image(s) pushed to kaputnik_images/")
+        results.ok(f"Orbit {orbit} GitHub push",
+                   f"{copied} image(s), {len(diffs)} diff(s) -> kaputnik_images/")
     except Exception as e:
         results.warn(f"Orbit {orbit} GitHub push", str(e))
 
