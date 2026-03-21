@@ -274,3 +274,21 @@
 2026-03-20T20:44:17Z  INFO      [DIFF      ]  orbit=0001  |  status=NO_REFERENCE  image=kaputnik_o0001_20260321T004413_01.jpg  message=No archive image found within comparison window (~708.55h)
 2026-03-20T20:44:17Z  INFO      [DOWNLINK  ]  orbit=0001  |  status=LINK_OPEN  pending_files=2  pending_mb=0.71
 2026-03-20T20:44:17Z  INFO      [DOWNLINK  ]  orbit=0001  |  status=LINK_CLOSED  files_sent=2  total_mb=0.71  deferred=0  telemetry_ok=True
+2026-03-20T20:44:19Z  INFO      [ORBIT     ]  orbit=0001  |  status=END  duration_s=5.6
+2026-03-20T20:44:19Z  INFO      [SLEEP     ]  orbit=0001  |  status=ENTERING_DEEP_SLEEP  sleep_min=0.2  wake_utc=N/A (test mode)  rtc_source=PiSugar3
+2026-03-20T20:44:31Z  INFO      [BOOT      ]  orbit=0002  |  status=WAKEUP  message=Pi woke from deep sleep via PiSugar 3 RTC alarm
+
+────────────────────────────────────────────────────────────
+  ORBIT 2/2
+────────────────────────────────────────────────────────────
+2026-03-20T20:44:31Z  INFO      [ORBIT     ]  orbit=0002  |  status=START  orbit=2  total_orbits=2  utc_time=2026-03-21T00:44:31.270715+00:00  phase=CAPTURE
+2026-03-20T20:44:31Z  INFO      [HEALTH    ]  orbit=0002  |  battery_pct=41.7  battery_v=3.552  battery_wh=1.778  charging=False  solar_present=False  cpu_temp_c=42.4  warnings=[]
+2026-03-20T20:44:31Z  INFO      [IMU       ]  orbit=0002  |  accel_x_ms2=0.2381  accel_y_ms2=-9.868  accel_z_ms2=0.3876  gyro_x_degs=-0.0963  gyro_y_degs=-0.0088  gyro_z_degs=-0.2013  mag_x_uT=-106  mag_y_uT=238.5  mag_z_uT=84.03  roll_deg=-104  pitch_deg=-77.7  yaw_deg=-104.1  timestamp=2026-03-21T00:44:31.307992+00:00  anomalies=[]  anomaly_count=0
+2026-03-20T20:44:31Z  INFO      [CAPTURE   ]  orbit=0002  |  status=START  images_planned=2
+2026-03-20T20:44:33Z  INFO      [CAPTURE   ]  orbit=0002  |  status=IMAGE_SAVED  index=0  filename=kaputnik_o0002_20260321T004431_00.jpg  size_kb=367
+2026-03-20T20:44:34Z  INFO      [CAPTURE   ]  orbit=0002  |  status=IMAGE_SAVED  index=1  filename=kaputnik_o0002_20260321T004431_01.jpg  size_kb=366.4
+2026-03-20T20:44:35Z  INFO      [CAPTURE   ]  orbit=0002  |  status=COMPLETE  saved=2  failed=0
+2026-03-20T20:44:35Z  INFO      [DIFF      ]  orbit=0002  |  new_image=kaputnik_o0002_20260321T004431_00.jpg  ref_image=kaputnik_o0001_20260321T004413_00.jpg  diff_image=diff_kaputnik_o0002_20260321T004431_00_vs_kaputnik_o0001_20260321T004413_00.jpg  change_detected=True  diff_size_kb=69.7
+2026-03-20T20:44:35Z  INFO      [DIFF      ]  orbit=0002  |  new_image=kaputnik_o0002_20260321T004431_01.jpg  ref_image=kaputnik_o0001_20260321T004413_01.jpg  diff_image=diff_kaputnik_o0002_20260321T004431_01_vs_kaputnik_o0001_20260321T004413_01.jpg  change_detected=True  diff_size_kb=69.2
+2026-03-20T20:44:35Z  INFO      [DOWNLINK  ]  orbit=0002  |  status=LINK_OPEN  pending_files=2  pending_mb=0.72
+2026-03-20T20:44:35Z  INFO      [DOWNLINK  ]  orbit=0002  |  status=LINK_CLOSED  files_sent=2  total_mb=0.72  deferred=0  telemetry_ok=True
